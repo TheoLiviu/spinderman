@@ -72,12 +72,16 @@ app.timer=0
 speed=6
 app.start=False
 app.dx2=4
-rewards = Group(Circle(60,320,20, fill='green'),
-               Star(120,320,20,5,fill='gold'),
-               Rect(170, 305, 40,20, fill='silver'),
+rewards = Group(Circle(70,320,20, fill='green'),
+               Star(129,320,20,5,fill='gold'),
+               Star(189, 320, 20, 5, fill='red'),
                Oval(250, 320, 20,40, fill='magenta'),
-               Arc(300, 320, 40, 20, 0,180,fill='cyan'))
+               Arc(295, 320, 40, 20, 0,180,fill='cyan'))
 rewards.visible=False
+
+app.rect = [ ]
+
+
 
 
 def spawnStars():
@@ -177,6 +181,17 @@ def deactivateBoss():
 def reward():
     
     if boss.opacity==0:
+
+        for cx in range(45, 335, 60):
+            square = Rect(cx, 295, 55, 55, fill='grey', opacity=90)
+            app.rect.append(square)
+
+        for square in app.rect:
+            if (square.contains(app.x, app.y) == True):
+                square.fill = 'lightgrey'
+            else:
+                square.fill = 'grey'
+        
         wd.visible=False
         wp.clear()
         endprise.visible=True
@@ -187,6 +202,9 @@ def reward():
             if (i.contains(app.x, app.y) == True):
                 i.width = 40
                 i.height= 40
+            else:
+                i.width = 30
+                i.height= 30
 
 def chooseReward():
     
@@ -204,9 +222,10 @@ def chooseReward():
                 rewards.add(i)
                 rewards.toFront()
                 Label('Yay!', 200,150, size=50)
+                app.stop() 
           
 def bossFight():
-
+    
     if score.value>39:
         stars.clear()
         
