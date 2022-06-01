@@ -7,6 +7,8 @@ import math
 app.stepsPerSecond=20
 app.background=None
 
+
+
 boss= Star(200, -60, 50, 20, fill='darkblue', border='black',borderWidth=2,roundness=90)
 bosshealthbar= Rect(170, -5, 60,6, fill='green')
 endprise=Label('Choose your reward', 200,200, size=40, visible=False)
@@ -28,7 +30,7 @@ stars= Group(Star(randrange(0,400), randrange(0,400), 10, 5, fill='gold', border
              Star(randrange(0,400), randrange(0,400), 10, 5, fill='gold', border='orange',
      borderWidth=2))
 
-instr=Label('Use SPACE to swing and W to climb up the rope', 200,100, fill='white', font='orbitron')
+instr=Label('Use SPACE to swing and W to climb up the rope, shoot with E when the boss comes', 200,100, fill='white', font='orbitron')
 goal=Label('Collect as many stars as you can to save the world', 200, 140, fill='white')
 start = Group()
 start.add(Rect(0,0,400,400,fill='black'))
